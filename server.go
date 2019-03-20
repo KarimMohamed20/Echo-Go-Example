@@ -19,6 +19,9 @@ func main() {
 			if c.Path() == "/login" || c.Path() == "/register" {
 				return true
 			}
+			if c.Path() == "/swagger/index.html"{
+				return true
+			}
 			return false
 		},
 	}))

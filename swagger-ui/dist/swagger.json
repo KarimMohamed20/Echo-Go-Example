@@ -26,8 +26,8 @@
     }
   ],
   "paths": {
-    "/users/{id}": {
-      "get": {
+    "/login": {
+      "post": {
 
         "tags": [
           "Users"
@@ -36,17 +36,74 @@
         "parameters": [
           {
             "type": "string",
-            "name": "id",
+            "name": "email",
             "required": true,
-            "in": "path"
+            "in": "body"
+          },
+          {
+            "type":"string",
+            "name":"password",
+            "required": true,
+            "in": "body"
+          }
+
+        ],
+        "responses": {
+          "200": {
+            "description": "UID, Email and Token",
+            "headers": {
+              "id": {
+                "type": "string",
+                "description": "UID (USER ID)"
+              },
+              "email": {
+                "type":"string",
+                "description": "USER EMAIL"
+              },
+              "token": {
+                "type":"string",
+                "description": "USER ACCESS TOKEN"
+              }
+            },
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+
+        "tags": [
+          "Users"
+        ],
+
+        "parameters": [
+          {
+            "type": "string",
+            "name": "email",
+            "required": true,
+            "in": "body"
+          },
+          {
+            "type": "string",
+            "name":"password",
+            "required": true,
+            "in": "body"
           }
         ],
         "responses": {
           "200": {
-            "description": "User Data",
+            "description": "Register Response",
             "headers": {
               "id": {
-                "type": "integer"
+                "type": "string",
+                "description": "UID (USER ID)"
+              },
+              "email": {
+                "type": "string",
+                "description": "USER EMAIL"
               }
             },
             "schema": {
@@ -65,23 +122,50 @@
 
         "parameters": [
           {
+            "name": "Authorization",
             "type": "string",
-            "name": "id",
             "required": true,
-            "in": "path"
+            "in": "header",
+            "description": "Get Posts of user by token"
           }
         ],
         "responses": {
           "200": {
-            "description": "User Data",
-            "headers": {
-              "id": {
-                "type": "integer"
-              }
-            },
-            "schema": {
-              "type": "string"
-            }
+            "description": "Your Posts"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "post": {
+
+        "tags": [
+          "Posts"
+        ],
+
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "required": true,
+            "in": "body"
+          },
+          {
+            "type": "string",
+            "name":"title",
+            "required": true,
+            "in": "body"
+          },
+          {
+            "type": "string",
+            "name":"content",
+            "required": true,
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created Post"
           }
         }
       }
