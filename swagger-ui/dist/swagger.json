@@ -1,0 +1,90 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Flutter Egypt Mobile App Server",
+    "title": "Flutter Egypt API",
+    "contact": {
+      "name": "Flutter Egypt",
+      "url": "http://www.facebook.com/FlutterEgypt",
+      "email": "FlutterEgypt@google.com"
+    },
+
+    "license": {
+      "name": "Author: Karim Mohamed",
+      "url": "https://github.com/KarimMohamed2005"
+    },
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name":"Users",
+      "description": "All users operations"
+    },
+    {
+      "name": "Posts",
+      "description": "All posts operations"
+    }
+  ],
+  "paths": {
+    "/users/{id}": {
+      "get": {
+
+        "tags": [
+          "Users"
+        ],
+
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "required": true,
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Data",
+            "headers": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+
+        "tags": [
+          "Posts"
+        ],
+
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "required": true,
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Data",
+            "headers": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
